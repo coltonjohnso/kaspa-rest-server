@@ -249,7 +249,7 @@ async def get_blocks_from_bluescore(
     add_cache_control(blueScore, None, response)
 
     # If the blue score is not older than 1 day, try looking up hashes and finding the blocks in kaspad first
-    if (current_blue_score_data["blue_score"] and current_blue_score_data["blue_score"] - blueScore) / BPS < 86400:
+    if current_blue_score_data["blue_score"] and (current_blue_score_data["blue_score"] - blueScore) / BPS < 86400:
         async with async_session_blocks() as s:
             block_hashes = (await s.execute(select(Block.hash).where(Block.blue_score == blueScore))).scalars().all()
 
