@@ -40,7 +40,8 @@ class TxOutput(BaseModel):
     script_public_key: str | None
     script_public_key_address: str | None
     script_public_key_type: str | None
-    accepting_block_hash: str | None
+    covenant_authorizing_input: int | None
+    covenant_id: str | None
 
     class Config:
         orm_mode = True
@@ -56,6 +57,8 @@ class TxInput(BaseModel):
     previous_outpoint_amount: int | None
     signature_script: str | None
     sig_op_count: str | None
+    compute_budget: int | None
+    covenant_id: str | None
 
     class Config:
         orm_mode = True
