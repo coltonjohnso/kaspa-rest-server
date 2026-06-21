@@ -564,7 +564,9 @@ def map_transaction_from_kaspad(block, transaction_id, block_hashes, include_inp
                             "script_public_key": tx_out["scriptPublicKey"]["scriptPublicKey"],
                             "script_public_key_address": tx_out["verboseData"]["scriptPublicKeyAddress"],
                             "script_public_key_type": tx_out["verboseData"]["scriptPublicKeyType"],
-                            "covenant_authorizing_input": tx_out["covenant"]["authorizingInput"] if tx_out["covenant"] else None,
+                            "covenant_authorizing_input": tx_out["covenant"]["authorizingInput"]
+                            if tx_out["covenant"]
+                            else None,
                             "covenant_id": tx_out["covenant"]["covenantId"] if tx_out["covenant"] else None,
                         }
                         for tx_out_idx, tx_out in enumerate(tx["outputs"])

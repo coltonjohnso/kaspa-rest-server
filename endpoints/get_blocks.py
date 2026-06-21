@@ -467,7 +467,9 @@ async def get_transactions(blockId, transactionIds):
                         "covenant": {
                             "authorizingInput": tx_out.covenant_authorizing_input,
                             "covenantId": tx_out.covenant_id,
-                        } if tx_out.covenant_id else None,
+                        }
+                        if tx_out.covenant_id
+                        else None,
                     }
                     for tx_out in (tx.outputs or [])
                 ],
